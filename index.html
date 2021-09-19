@@ -33,7 +33,14 @@
 
                var pageurl = window.location.href;
                var segment = pageurl.split('?');
-               var url= segment[1];           
+               var url= segment[1];  
+               var mode = segment[4]
+               if(mode == "light")
+               {
+               document.body.style.backgroundColor = "white";
+               document.getElementById("caption").style.color = "black";
+               
+               }
                imagesrc = url.replace(/!/g, '/');
                document.getElementById("image").src = imagesrc
                await sleep(1000);
