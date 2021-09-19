@@ -32,6 +32,8 @@
                var url= segment[1];           
                imagesrc = url.replace(/!/g, '/');
                document.getElementById("image").src = imagesrc
+               var sizewidth = document.getElementById("image").naturalWidth
+               var sizeheight = document.getElementById("image").naturalHeight
                var captionunspaced = segment[2]
                var caption = captionunspaced.replace(/%20/g, ' ');               
                var uploadernameunspaced = segment[3]
@@ -42,8 +44,6 @@
                document.getElementById("uploader").innerHTML = "<i>Uploaded by " + uploadername + "</i>"
                document.title = filename + " by " + uploadername;
                await sleep(1000);
-               var sizewidth = document.getElementById("image").naturalWidth
-               var sizeheight = document.getElementById("image").naturalHeight
                document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>"
                
 
