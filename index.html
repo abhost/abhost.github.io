@@ -33,9 +33,9 @@
                var uploadername = uploadernameunspaced.replace(/%20/g, ' ');
                var fullPath = document.getElementById("image").src;
                var filename = fullPath.substring(fullPath.lastIndexOf('/')+1);
+               document.getElementById("caption").innerHTML = caption 
                var sizewidth = document.getElementById("image").naturalWidth
                var sizeheight = document.getElementById("image").naturalHeight
-               document.getElementById("caption").innerHTML = caption 
                document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
                document.getElementById("uploader").innerHTML = "<i>Uploaded by " + uploadername + "</i>"
                document.title = filename + " by " + uploadername;
