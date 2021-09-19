@@ -19,8 +19,13 @@
         <div>
 
  <script>
+     
+     function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+     
      let imagesrc = "placeholder";
-           function open(){
+           async function open(){
 
                var pageurl = window.location.href;
                var segment = pageurl.split('?');
@@ -36,12 +41,10 @@
                document.getElementById("caption").innerHTML = caption 
                document.getElementById("uploader").innerHTML = "<i>Uploaded by " + uploadername + "</i>"
                document.title = filename + " by " + uploadername;
+               await sleep(1000);
                var sizewidth = document.getElementById("image").naturalWidth
                var sizeheight = document.getElementById("image").naturalHeight
-               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
-               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
-               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
-               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
+               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>"
                
 
 
