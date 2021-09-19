@@ -29,12 +29,13 @@
 }
      
      let imagesrc = "placeholder";
+     let mode = "placeholder";
            async function open(){
 
                var pageurl = window.location.href;
                var segment = pageurl.split('?');
                var url= segment[1];  
-               var mode = segment[4]
+               mode = segment[4];
                if(mode == "light")
                {
                document.body.style.backgroundColor = "white";
@@ -42,6 +43,8 @@
                document.getElementById("uploader").style.color = "#242424";
                document.getElementById("info").style.color = "#242424";
                document.getElementById("image").style.borderColor = "#919191";
+               document.getElementById("original").style.backgroundColor = "#919191";
+               document.getElementById("original").style.color = "white";
                
                }
                imagesrc = url.replace(/!/g, '/');
@@ -69,11 +72,20 @@
            function changecolour(){
 
               document.getElementById("original").style.backgroundColor = "#5e5e5e";
+                if(mode == "light")
+               {
+                   document.getElementById("original").style.backgroundColor = "#707070";
+               }
            }
 
            function revertcolour(){
 
                document.getElementById("original").style.backgroundColor = "#383838";
+               if(mode == "light")
+               {
+                   document.getElementById("original").style.backgroundColor = "#919191";
+               }
+               
            }
 
            function redirectoriginal(){
