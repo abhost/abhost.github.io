@@ -32,6 +32,7 @@
                var url= segment[1];           
                imagesrc = url.replace(/!/g, '/');
                document.getElementById("image").src = imagesrc
+               await sleep(1000);
                var sizewidth = document.getElementById("image").naturalWidth
                var sizeheight = document.getElementById("image").naturalHeight
                var captionunspaced = segment[2]
