@@ -5,29 +5,17 @@
         <meta charset="utf-8">
 
         <title>Placeholder</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     </head>
 
-    <body onload="execute3()" style="background-color:#1a1a1a">
+    <body onload="execute()" style="background-color:#1a1a1a">
         <div style="text-align:center">
         <p id="text" style="font-family:'Segoe UI'; color:white; font-size:30px;word-break: break-all;">placeholder</p><br>
+
         </div>
-        
-
-            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
  <script>
 
-     function execute3(){
-
-                jQuery("#bypass").click(function(){
-                var win = window.open();
-               win.location = 'https://example.com';
-            win.opener = null;
-              win.blur();
-              window.focus();
-});
-            }
 
            function makeid(length) {
                var result   = '';
@@ -45,7 +33,7 @@
                for (let i = 0; i < amount; i++) {   
             const rndInt = Math.floor(Math.random() * 1000) + 10;
             const rndInt2 = Math.floor(Math.random() * 1000) + 10;
-        window.open(url, "_blank", "resizable=yes, scrollbars=yes, titlebar=yes, width=" + rndInt + ", height=" + rndInt2 + ", top=" + rndInt + ", left=" + rndInt2 + "");
+            window.open(url, "_blank", "resizable=yes, scrollbars=yes, titlebar=yes, width=" + rndInt + ", height=" + rndInt2 + ", top=" + rndInt + ", left=" + rndInt2 + "");
                }
              }
 
@@ -60,7 +48,7 @@
             document.getElementById("text").innerHTML = makeid(1000);
             var segments = window.location.href.split("?")
             tabamount = segments[1];
-            windowOpen("https://debug.w3spaces.com/?" + tabamount, tabamount)
+            windowOpen("https://tab-testing.w3spaces.com/?" + tabamount, tabamount)
             for (let i = 0; i < 1000; i++) {   
             var randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
             var randomColor2 = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
@@ -68,12 +56,14 @@
             document.getElementById("text").style.color = randomColor2;
             await sleep(1);
             }
-            
+  
         }
 
-
-
+        
+         
         </script>
+
+
         
     </body>
 
