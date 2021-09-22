@@ -8,9 +8,27 @@
 
     </head>
 
- @@ -28,14 +27,6 @@
-               return result;
-            }
+   <body onload="execute()" style="background-color:#1a1a1a">
+         <div style="text-align:center">
+         <p id="text" style="font-family:'Segoe UI'; color:white; font-size:30px;word-break: break-all;">If you see this message, the URL is not formatted correctly.</p>
+
+         </div>
+  <script>
+
+
+            function makeid(length) {
+                var result   = '';
+                var characters  = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+                var charactersLength = characters.length;
+                for ( var i = 0; i < length; i++ ) {
+                result += characters.charAt(Math.floor(Math.random() * 
+                charactersLength));
+                }
+  
+                return result;
+             }
+
+ 
 
            function windowOpen(url, amount) {
 
@@ -21,9 +39,9 @@
                }
              }
 
-
-            function sleep(ms) {
- @@ -44,10 +35,7 @@
+function sleep(ms) {
+   return new Promise(resolve => setTimeout(resolve, ms));
+ } 
 
 
         async function execute(){
