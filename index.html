@@ -42,7 +42,7 @@ function sleep(ms) {
                var filename = fullPath.substring(fullPath.lastIndexOf('/')+1);
                var sizewidth = document.getElementById("image").naturalWidth
                var sizeheight = document.getElementById("image").naturalHeight
-               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
+               document.getElementById("info").innerHTML = filename + " [" + sizewidth + "px x " + sizeheight + "px]" 
                document.title = filename;
                await sleep(1000);
                var sizewidth = document.getElementById("image").naturalWidth
