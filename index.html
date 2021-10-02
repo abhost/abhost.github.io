@@ -22,7 +22,7 @@
             <br>
         <img style="height:400px; border: 3px solid #383838;" id="image" src="randomthingforsrc" alt="Loading..."><br><br>
         <label style="font-family:'Ubuntu'; color:white; font-size:20px" id="info">Loading...</label><br><br>
-        <button id="original" onclick="redirectoriginal()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; border-radius:5px; cursor:pointer; background-color:#383838; color:white; width:200px; height:40px; font-family:'Ubuntu'">See original image</button>
+        <button id="original" onclick="redirectoriginal()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; border-radius:5px; cursor:pointer; background-color:#383838; color:white; width:200px; height:30px; font-family:'Ubuntu'">See original image</button>
         </div>
 
  <script>
@@ -47,7 +47,7 @@ function sleep(ms) {
                await sleep(1000);
                var sizewidth = document.getElementById("image").naturalWidth
                var sizeheight = document.getElementById("image").naturalHeight
-               document.getElementById("info").innerHTML = "<i>" + filename + " [" + sizewidth + "px x " + sizeheight + "px]</i>" 
+               document.getElementById("info").innerHTML = filename + " [" + sizewidth + "px x " + sizeheight + "px]" 
 
 
 
