@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <title>twerk.ga Uploader Panel</title>
+
+    <style>
+        @font-face {
+  font-family: 'Ubuntu';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcg72j00.woff2) format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+    </style>
+
+</head>
+
+<body>
+    <h1 style="font-family:'Ubuntu'">Twerk.ga Image Uploader</h1>
+    <input type="file" id="file"><br><br>
+    <label style="font-family:'Ubuntu'" id="url">Your URL will show up here after you select an image.</label>
+
+
+    <script>
+        const file = document.getElementById("file")
+        const url = document.getElementById("url")
+        file.addEventListener("change", ev => {
+            const formdata = new FormData()
+            formdata.append("image", ev.target.files[0])
+            fetch("https://api.imgur.com/3/image/", {
+                method: "post",
+                headers: {
+                    Authorization: "Client-ID 3ab16a40b4e9f88"
+                },
+                body: formdata
+            }).then(data => data.json()).then(data => {
+                url.innerHTML = "Success! Your image is uploaded at <a href=\"" + data.data.link.replace("https://i.imgur.com/", 'https://www.i-love-to.twerk.ga/?') + "\">" + data.data.link.replace("https://i.imgur.com/", 'https://www.i-love-to.twerk.ga/?') + "</a>"
+            })
+        })
+    </script>
+
+</body>
+</html>
