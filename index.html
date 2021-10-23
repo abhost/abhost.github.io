@@ -1,77 +1,63 @@
 <!DOCTYPE HTML>
-
 <html>
-    <head>
-        <meta charset="utf-8">
-        <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
-        <title>test</title>
-  <style>
-        @font-face {
-  font-family: 'Ubuntu';
-  font-style: normal;
-  font-weight: 400;
-  src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcg72j00.woff2) format('woff2');
-  unicode-range: U+0460-052F, U+1C80-1C88, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/faunadb@latest/dist/faunadb.js"></script>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta property="og:type" content="website">
+<meta property="og:title" content="AbsqTube">
+<meta property="og:description" content="Simple YouTube Bypasser">
+<meta name="theme-color" content="#d42a2a">
+  <title>URL Shortener</title>
+</head>
+
+<body>
+  <label style="font-family:'Segoe UI'">Name</label><br>
+  <input type="text" style="width:400px; height:20px; font-family:'Segoe UI'" id="name" placeholder="Enter a name..."><br><br>
+    <label style="font-family:'Segoe UI'">URL To Redirect</label><br>
+  <input type="text" style="width:400px; height:20px; font-family:'Segoe UI'" id="redirect" placeholder="Enter a URL to redirect..."><br><br>
+  <button style="width:100px; height:25px; font-family:'Segoe UI'; margin:10px" onclick="create()">Create</button><br>
+  <label id="result" style="font-family:'Segoe UI'">URL will appear here.</label>
+  <script>
+     var faunadb = window.faunadb
+  var q = faunadb.query
+  var client = new faunadb.Client({
+    secret: 'fnAEWN0RMFAAwFxR2C5vwBRsORnw7OriYRS0cvVd',
+    domain: 'db.eu.fauna.com',
+    scheme: 'https',
+  })
+function create(){
+
+
+client.query(
+  q.Get(
+    q.Match(q.Index('posts_by_name'), document.getElementById("name"))
+  )
+)
+.then((ret) => 
+      
+document.getElementById("result").innerHTML = "This name is taken."
+
+)
+.catch(function(e){
+    client.query(
+  q.Create(
+    q.Collection('url-database'),
+    { data: { name: document.getElementById("name").value, url:  document.getElementById("redirect").value } },
+  )
+)
+.then((ret) =>
+     
+     document.getElementById("result").innerHTML = "https://cancels.github.io/redirect.html?" + ret.data.name
+     )
+});
+
+
+
+
 }
-    </style>
-    </head>
-  
-
-    <body style="background-color:#1a1a1a" onload="open()">
-        <div style="text-align:center">
-            <br>
-        <img style="height:400px; border: 3px solid #383838;" id="image" src="randomthingforsrc" alt="Loading..."><br><br>
-        <label style="font-family:'Ubuntu'; color:white; font-size:20px" id="info">Loading...</label><br><br>
-        <button id="original" onclick="redirectoriginal()" onmouseover="changecolour()" onmouseleave="revertcolour()" style="border:0; border-radius:5px; cursor:pointer; background-color:#383838; color:white; width:200px; height:30px; font-family:'Ubuntu'">See original image</button>
-        </div>
-
- <script>
-
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
-     let imagesrc = "placeholder";
-           async function open(){
-
-               var pageurl = window.location.href;
-               var segment = pageurl.split('?');
-               var url= segment[1];     
-               imagesrc = "https://i.imgur.com/" + url
-               document.getElementById("image").src = imagesrc
-               var fullPath = document.getElementById("image").src;
-               var filename = fullPath.substring(fullPath.lastIndexOf('/')+1);
-               var sizewidth = document.getElementById("image").naturalWidth
-               var sizeheight = document.getElementById("image").naturalHeight
-               document.getElementById("info").innerHTML = filename + " [" + sizewidth + "px x " + sizeheight + "px]" 
-               document.title = filename;
-               await sleep(1000);
-               var sizewidth = document.getElementById("image").naturalWidth
-               var sizeheight = document.getElementById("image").naturalHeight
-               document.getElementById("info").innerHTML = filename + " [" + sizewidth + "px x " + sizeheight + "px]" 
-
-
-
-           }
-
-          function changecolour(){
-
-              document.getElementById("original").style.backgroundColor = "#5e5e5e";
-
-           }
-
-           function revertcolour(){
-
-               document.getElementById("original").style.backgroundColor = "#383838";
-
-           }
-
-           function redirectoriginal(){
-
-               window.location.replace(imagesrc);
-           }
-
-        </script>
-
-    </body>
+    </script>
+</body>
 
 </html>
